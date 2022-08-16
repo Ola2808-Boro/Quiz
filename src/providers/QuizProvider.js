@@ -27,8 +27,7 @@ export const QuizProvider = ({ children }) => {
   const [result, setResult] = useState(0);
   const [resultMax, setResultMax] = useState(initStateMax);
 
-  const { handleClick, setGameOption, initState, gameOption } =
-    useContext(optionContext);
+  const { handleClick, setGameOption, initState } = useContext(optionContext);
 
   function getResult() {
     let correctAnswer = 0;

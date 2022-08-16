@@ -6,10 +6,10 @@ import ReactLoading from "react-loading";
 import { optionContext } from "providers/OptionProvider";
 import { quizContext } from "providers/QuizProvider";
 import QuizQuestions from "components/organisms/QuizQuestions/QuizQuestions";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 const Quiz = () => {
-  const { getRandomInt, setQuizData, setResultMax } = useContext(quizContext);
-  const { gameOption, setGameOption, initState } = useContext(optionContext);
+  const { getRandomInt, setQuizData } = useContext(quizContext);
+  const { gameOption } = useContext(optionContext);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -59,6 +59,7 @@ const Quiz = () => {
     setTimeout(() => {
       setIsLoading(false);
     }, 3000);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
