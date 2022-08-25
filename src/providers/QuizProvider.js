@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext } from "react";
+import React, { createContext, useState, useContext, useReducer } from "react";
 import { optionContext } from "./OptionProvider";
 
 export const quizContext = createContext({
@@ -9,11 +9,11 @@ export const quizContext = createContext({
   result: 0,
   setResult: () => {},
   resultMax: {},
-  setResultMax: () => {},
   handleClick: () => {},
   handleButtonClick: () => {},
   canCheck: () => {},
   getRandomInt: () => {},
+  dispatch: () => {},
 });
 
 export const QuizProvider = ({ children }) => {
@@ -22,10 +22,33 @@ export const QuizProvider = ({ children }) => {
     isResultMax: false,
   };
 
+  const reducer = (state, action) => {
+    switch (action.type) {
+      case "Clean":
+        return {
+          result: "",
+          isResultMax: false,
+        };
+      case "Check result is Max":
+        return {
+          ...state,
+          isResultMax: true,
+        };
+
+      case "Check max Result":
+        return {
+          ...state,
+          result: quizData.length,
+        };
+
+      default:
+        return state;
+    }
+  };
   const [quizData, setQuizData] = useState([]);
   const [check, setCheck] = useState(false);
   const [result, setResult] = useState(0);
-  const [resultMax, setResultMax] = useState(initStateMax);
+  const [resultMax, dispatch] = useReducer(reducer, initStateMax);
 
   const { handleClick, setGameOption, initState } = useContext(optionContext);
 
@@ -38,20 +61,11 @@ export const QuizProvider = ({ children }) => {
       }
     });
     if (correctAnswer === quizData.length) {
-      setResultMax((prevState) => {
-        return {
-          ...prevState,
-          isResultMax: true,
-        };
-      });
+      dispatch({ type: "Check result is Max" });
     }
+
     setResult(correctAnswer);
-    setResultMax((prevState) => {
-      return {
-        ...prevState,
-        result: quizData.length,
-      };
-    });
+    dispatch({ type: "Check max Result" });
   }
 
   function handleClickAnswer(key, event, answer, idAnswer) {
@@ -133,7 +147,6 @@ export const QuizProvider = ({ children }) => {
     <quizContext.Provider
       value={{
         setQuizData,
-        setResultMax,
         quizData,
         check,
         handleClickAnswer,
@@ -142,6 +155,7 @@ export const QuizProvider = ({ children }) => {
         resultMax,
         getResult,
         getRandomInt,
+        dispatch,
       }}
     >
       {children}

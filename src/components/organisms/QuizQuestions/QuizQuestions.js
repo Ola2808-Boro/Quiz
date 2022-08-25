@@ -8,13 +8,10 @@ import Confetti from "react-confetti";
 
 const QuizQuestions = () => {
   const { width, height } = useWindowSize();
-  const { check, result, resultMax, setResultMax } = useContext(quizContext);
+  const { check, result, resultMax, dispatch } = useContext(quizContext);
   useEffect(() => {
     return () => {
-      setResultMax({
-        result: "",
-        isResultMax: false,
-      });
+      dispatch({ type: "Clean" });
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
