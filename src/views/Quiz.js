@@ -25,7 +25,6 @@ const Quiz = () => {
       .then((res) =>
         setQuizData((prevData) =>
           prevData.map((data) => {
-            console.log(data.correct_answer);
             let array = [data.correct_answer, ...data.incorrect_answers];
             array.sort();
             array.reverse();

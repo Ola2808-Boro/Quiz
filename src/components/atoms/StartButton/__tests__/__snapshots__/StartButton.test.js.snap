@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test start button default style 1`] = `
+<button
+  className="eitdAa"
+/>
+`;

@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { Button } from "./StartButton.styles";
-import PropTypes from "prop-types";
 import { optionContext } from "providers/OptionProvider";
 const StartButton = () => {
   const { handleClick } = useContext(optionContext);

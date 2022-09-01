@@ -11,7 +11,7 @@ const Result = ({ result, resultMax }) => {
 
 Result.propTypes = {
   result: PropTypes.string.isRequired,
-  resultMax: PropTypes.number.isRequired,
+  resultMax: PropTypes.object.isRequired,
 };
 
 export default Result;

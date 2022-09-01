@@ -4,7 +4,7 @@ import { Description } from "components/atoms/Description/Description";
 const HeaderText = () => {
   return (
     <>
-      <Title>Quizzal</Title>
+      <Title data-testid="title">Quizzal</Title>
       <Description>Answer the questions and test your knowledge!</Description>
     </>
   );

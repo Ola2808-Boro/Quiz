@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { device } from "helpers/breakpoints";
+
 export const StyledTitle = styled.h1`
   font-size: ${({ theme }) => theme.fontSize.l};
   color: ${({ theme }) => theme.colors.text};

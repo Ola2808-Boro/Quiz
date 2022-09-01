@@ -14,6 +14,8 @@ export const quizContext = createContext({
   canCheck: () => {},
   getRandomInt: () => {},
   dispatch: () => {},
+  isLoading: true,
+  setIsLoading: () => {},
 });
 
 export const QuizProvider = ({ children }) => {
@@ -49,7 +51,7 @@ export const QuizProvider = ({ children }) => {
   const [check, setCheck] = useState(false);
   const [result, setResult] = useState(0);
   const [resultMax, dispatch] = useReducer(reducer, initStateMax);
-
+  const [isLoading, setIsLoading] = useState(true);
   const { handleClick, setGameOption, initState } = useContext(optionContext);
 
   function getResult() {
@@ -156,6 +158,8 @@ export const QuizProvider = ({ children }) => {
         getResult,
         getRandomInt,
         dispatch,
+        isLoading,
+        setIsLoading,
       }}
     >
       {children}

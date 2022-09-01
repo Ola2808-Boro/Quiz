@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test Quiz Button Test default style 1`] = `
+<button
+  className="cGdJYJ"
+/>
+`;

@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test info component default style 1`] = `
+<select
+  className="cPwmmi"
+/>
+`;
